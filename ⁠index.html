@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ckb" dir="rtl">
+<html lang="ckb" dir="rtl" id="htmlRoot">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -40,12 +40,105 @@
             flex-direction: column;
             align-items: center;
         }
+
+        /* Splash Screen / Gate */
+        #welcomeGate {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(4, 4, 4, 0.98);
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .gate-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 24px;
+            width: 100%;
+            max-width: 380px;
+            text-align: center;
+            box-shadow: 0 10px 40px rgba(0, 255, 204, 0.15);
+        }
+        .gate-logo {
+            width: 70px;
+            height: 70px;
+            border-radius: 16px;
+            border: 2px solid var(--accent);
+            margin: 0 auto 15px auto;
+            object-fit: cover;
+            box-shadow: 0 0 15px var(--accent-glow);
+        }
+        .lang-options {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin: 15px 0 20px 0;
+        }
+        .lang-btn {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+            padding: 10px 20px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 700;
+            transition: 0.2s;
+        }
+        .lang-btn.active, .lang-btn:hover {
+            background: var(--accent);
+            color: #000;
+            border-color: var(--accent);
+        }
+        .gate-msg {
+            font-size: 13px;
+            color: var(--text-sub);
+            line-height: 1.6;
+            margin-bottom: 20px;
+            background: rgba(0,0,0,0.3);
+            padding: 12px;
+            border-radius: 10px;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+        .join-channel-btn {
+            display: block;
+            background: #229ED9;
+            color: #fff;
+            padding: 12px;
+            border-radius: 12px;
+            font-weight: 800;
+            font-size: 14px;
+            margin-bottom: 12px;
+            box-shadow: 0 4px 15px rgba(34, 158, 217, 0.3);
+        }
+        .continue-btn {
+            width: 100%;
+            background: var(--accent);
+            color: #000;
+            border: none;
+            padding: 12px;
+            border-radius: 12px;
+            font-weight: 800;
+            font-size: 15px;
+            cursor: pointer;
+            box-shadow: 0 0 15px var(--accent-glow);
+        }
+
+        /* Main Header */
         .header {
             width: 100%;
             max-width: 420px;
             margin-bottom: 20px;
             border-bottom: 1px solid var(--border-color);
             padding-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
         .avatar-badge {
             display: flex;
@@ -53,8 +146,8 @@
             gap: 15px;
         }
         .logo-box {
-            width: 64px;
-            height: 64px;
+            width: 60px;
+            height: 60px;
             border-radius: 12px;
             background: #000;
             border: 2px solid var(--accent);
@@ -71,14 +164,13 @@
         }
         .header-text h1 {
             margin: 0 0 4px 0;
-            font-size: 24px;
+            font-size: 22px;
             font-weight: 800;
-            letter-spacing: 1px;
             color: var(--text-main);
         }
         .header-text p {
             margin: 0;
-            font-size: 12px;
+            font-size: 11px;
             color: var(--text-sub);
             display: flex;
             align-items: center;
@@ -92,16 +184,46 @@
             display: inline-block;
             box-shadow: 0 0 10px var(--accent);
         }
+        .lang-switch-icon {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid var(--border-color);
+            color: var(--accent);
+            padding: 6px 12px;
+            border-radius: 8px;
+            font-size: 12px;
+            cursor: pointer;
+            font-weight: 700;
+        }
+        
         .container {
             width: 100%;
             max-width: 420px;
         }
-        
-        /* دیزاینی بەشی ئەپی تایبەت */
+
+        /* Visitor Counter */
+        .visitor-counter {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 10px 16px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 12px;
+            color: var(--text-sub);
+        }
+        .visitor-counter span b {
+            color: var(--accent);
+            font-family: monospace;
+            font-size: 14px;
+        }
+
+        /* Special App Banner */
         .special-app-banner {
             position: relative;
             width: 100%;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
             background: linear-gradient(135deg, #101010 0%, #1a1a1a 100%);
             border: 1px solid rgba(0, 255, 204, 0.4);
             border-radius: 16px;
@@ -116,15 +238,6 @@
             border-color: #00ffcc;
             box-shadow: 0 0 25px rgba(0, 255, 204, 0.3);
         }
-        .banner-glow {
-            position: absolute;
-            top: -50%;
-            right: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(0,255,204,0.08) 0%, transparent 70%);
-            pointer-events: none;
-        }
         .banner-content {
             display: flex;
             align-items: center;
@@ -133,13 +246,12 @@
             z-index: 2;
         }
         .banner-icon-box {
-            width: 50px;
-            height: 50px;
+            width: 45px;
+            height: 45px;
             border-radius: 12px;
             border: 2px solid #00ffcc;
             overflow: hidden;
             flex-shrink: 0;
-            box-shadow: 0 0 10px rgba(0, 255, 204, 0.3);
         }
         .banner-icon-box img {
             width: 100%;
@@ -148,40 +260,75 @@
         }
         .banner-text {
             flex-grow: 1;
-            margin: 0 14px;
+            margin: 0 12px;
         }
         .badge-new {
             background: rgba(0, 255, 204, 0.15);
             color: #00ffcc;
-            font-size: 10px;
+            font-size: 9px;
             font-weight: 800;
-            padding: 2px 8px;
-            border-radius: 6px;
-            text-transform: uppercase;
+            padding: 2px 6px;
+            border-radius: 4px;
         }
         .banner-text h3 {
-            margin: 5px 0 2px 0;
-            font-size: 15px;
+            margin: 4px 0 2px 0;
+            font-size: 14px;
             font-weight: 800;
             color: #ffffff;
         }
         .banner-text p {
             margin: 0;
-            font-size: 11px;
+            font-size: 10px;
             color: #888888;
         }
         .arrow-icon {
-            font-size: 18px;
+            font-size: 16px;
             color: #00ffcc;
             font-weight: bold;
-            transition: transform 0.2s;
         }
-        .special-app-banner:hover .arrow-icon {
-            transform: translateX(-4px);
+
+        /* Logo Maker Section */
+        .logo-maker-box {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 16px;
+            margin-bottom: 20px;
+        }
+        .logo-maker-box h3 {
+            margin: 0 0 10px 0;
+            font-size: 14px;
+            color: var(--accent);
+        }
+        .logo-input {
+            width: 100%;
+            padding: 10px;
+            background: #080808;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            color: #fff;
+            font-size: 13px;
+            margin-bottom: 10px;
+            outline: none;
+        }
+        .generate-btn {
+            width: 100%;
+            background: rgba(0, 255, 204, 0.15);
+            border: 1px solid var(--accent);
+            color: var(--accent);
+            padding: 10px;
+            border-radius: 8px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .generate-btn:hover {
+            background: var(--accent);
+            color: #000;
         }
 
         .section-title {
-            font-size: 13px;
+            font-size: 12px;
             color: var(--accent);
             margin: 20px 0 10px 0;
             font-weight: 700;
@@ -196,6 +343,7 @@
             border-radius: 16px;
             border: 1px solid var(--border-color);
             overflow: hidden;
+            margin-bottom: 15px;
         }
         .file-list.pro-list {
             border-color: var(--border-pro);
@@ -208,9 +356,6 @@
             padding: 14px 16px;
             border-bottom: 1px solid var(--border-color);
             transition: background 0.2s;
-        }
-        .file-list.pro-list .file-item {
-            border-bottom-color: rgba(255, 215, 0, 0.15);
         }
         .file-item:last-child {
             border-bottom: none;
@@ -265,10 +410,45 @@
             font-weight: 700;
             font-size: 11px;
         }
+        .contact-box {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 16px;
+            text-align: center;
+            margin-top: 20px;
+        }
+        .contact-box a {
+            color: var(--accent);
+            font-weight: bold;
+            font-size: 15px;
+        }
     </style>
 </head>
 <body>
 
+    <!-- Welcome Gate & Language Selector Modal -->
+    <div id="welcomeGate">
+        <div class="gate-card">
+            <img src="logo.png" alt="Logo" class="gate-logo">
+            <h3 id="gateTitle" style="margin: 0 0 10px 0; font-size: 16px;">تکایە زمانی دڵخوازت هەڵبژێرە 👇🏽</h3>
+            
+            <div class="lang-options">
+                <button class="lang-btn active" onclick="setLanguage('ckb')">کوردی 🇹🇯</button>
+                <button class="lang-btn" onclick="setLanguage('en')">English 🏴󠁧󠁢󠁥󠁮󠁧󠁿</button>
+            </div>
+
+            <div class="gate-msg" id="gateMsg">
+                ئەم وێپسایتە دروست کراوی چەناڵی HAMA⚡️VIP بۆ ئێوەی خۆشەویست وەک هاو کاریەک جۆینی چەناڵ بکە❤️
+            </div>
+
+            <a href="https://t.me/hama_vip1" target="_blank" class="join-channel-btn" id="joinBtn">جۆین کردنی چەناڵ 😍❤️</a>
+
+            <button class="continue-btn" onclick="closeGate()" id="continueBtn">بەردەوام بوون ...</button>
+        </div>
+    </div>
+
+    <!-- Main Header -->
     <div class="header">
         <div class="avatar-badge">
             <div class="logo-box">
@@ -276,77 +456,331 @@
             </div>
             <div class="header-text">
                 <h1>Hx-Speech</h1>
-                <p><span class="status-dot"></span> سەکۆی فەرمی فایل و سێرڤەرەکان</p>
+                <p><span class="status-dot"></span> <span id="txtStatus">سەکۆی فەرمی فایل و سێرڤەرەکان</span></p>
             </div>
         </div>
+        <button class="lang-switch-icon" onclick="toggleLanguage()" id="langSwitchBtn">EN / کوردی</button>
     </div>
 
     <div class="container">
 
-        <!-- بەشی ئەپی تایبەت بە خۆمان (بە شێوازێکی زۆر سەرنجڕاکێش) -->
+        <!-- Visitor Counter -->
+        <div class="visitor-counter">
+            <span id="txtVisitorsTitle">👥 کۆی سەردانیکەرانی وێبسایت:</span>
+            <span id="visitorCount"><b>...</b></span>
+        </div>
+
+        <!-- Special App Banner -->
         <div class="special-app-banner" onclick="window.location.href='app.html'">
-            <div class="banner-glow"></div>
             <div class="banner-content">
                 <div class="banner-icon-box">
                     <img src="logo.png" alt="App Logo">
                 </div>
                 <div class="banner-text">
-                    <span class="badge-new">تایبەت و نایاب</span>
-                    <h3>ئەپە تایبەتەکەی خۆمان ⚡</h3>
-                    <p>کرتە بکە بۆ کردنەوەی پۆرتالی سەرەکی ئەپەکە</p>
+                    <span class="badge-new" id="txtBadgeApp">تایبەت و نایاب</span>
+                    <h3 id="txtAppName">ئەپە تایبەتەکەی خۆمان ⚡</h3>
+                    <p id="txtAppDesc">کرتە بکە بۆ کردنەوەی پۆرتالی سەرەکی ئەپەکە</p>
                 </div>
                 <div class="arrow-icon">←</div>
             </div>
         </div>
 
-        <!-- بەشی چوونەژوورەوەی پرۆ -->
-        <div class="section-title pro-title">⭐ پۆرتالی تایبەتی PRO & Server</div>
+        <!-- Logo Creator Tool Section -->
+        <div class="logo-maker-box">
+            <h3 id="txtLogoMakerTitle">🎨 بەشی دروستکردنی لۆگۆ (Logo Maker)</h3>
+            <p style="font-size: 11px; color: var(--text-sub); margin-bottom: 10px;" id="txtLogoMakerDesc">ناوی خۆت یان کەناڵەکەت بنووسە بۆ داواکردنی دیزاینی تایبەت:</p>
+            <input type="text" class="logo-input" id="logoText" placeholder="ناو یان دەقی لۆگۆ...">
+            <button class="generate-btn" onclick="generateLogoRequest()" id="txtLogoBtn">داواکردنی لۆگۆ ڕاستەوخۆ ⚡</button>
+        </div>
+
+        <!-- PRO Portal -->
+        <div class="section-title pro-title" id="txtProTitle">⭐ پۆرتالی تایبەتی PRO & Server</div>
         <div class="file-list pro-list">
             <a href="proverifay.html" class="file-item">
                 <div class="file-info">
                     <div class="file-icon">⚡</div>
                     <div class="file-details">
-                        <h3>چوونەژوورەوە بە کلیل (Verification)</h3>
-                        <p>بۆ خاوەن کلیلەکانی PRO (5,000 IQD) و Server (10,000 IQD)</p>
+                        <h3 id="txtProItemTitle">چوونەژوورەوە بە کلیل (Verification)</h3>
+                        <p id="txtProItemDesc">بۆ خاوەن کلیلەکانی PRO (5,000 IQD) و Server (10,000 IQD)</p>
                     </div>
                 </div>
                 <div class="file-meta">
                     <span class="tag pro-tag">VIP</span>
-                    <span class="price-badge">کردنەوە ←</span>
+                    <span class="price-badge" id="txtOpen">کردنەوە ←</span>
                 </div>
             </a>
         </div>
 
-        <!-- بەشی سایدلۆدەرەکان -->
-        <div class="section-title">سایدلۆدەری ئایۆس و ئامرازەکان</div>
+        <!-- Exact Ordered Channels Section -->
+        <div class="section-title" id="txtChannelsTitle">📢 چەناڵ و گروپەکانی حەمە (HAMA VIP)</div>
+        <div class="file-list">
+            <!-- 1 -->
+            <a href="https://t.me/hama_vip1" target="_blank" class="file-item">
+                <div class="file-info">
+                    <div class="file-icon">🔥</div>
+                    <div class="file-details">
+                        <h3>چەناڵی فەرمی حەمە</h3>
+                        <p>دەسم لێدە بۆ جۆین کردن</p>
+                    </div>
+                </div>
+                <div class="file-meta"><span class="price-badge">جۆین ↗</span></div>
+            </a>
+            <!-- 2 -->
+            <a href="https://t.me/hama_feedback2" target="_blank" class="file-item">
+                <div class="file-info">
+                    <div class="file-icon">⭐</div>
+                    <div class="file-details">
+                        <h3>چەناڵی فیدباک و سیقەی حەمە</h3>
+                        <p>دەسم لێدە بۆ جۆین کردن</p>
+                    </div>
+                </div>
+                <div class="file-meta"><span class="price-badge">جۆین ↗</span></div>
+            </a>
+            <!-- 3 -->
+            <a href="https://t.me/hama_vip_key1" target="_blank" class="file-item">
+                <div class="file-info">
+                    <div class="file-icon">🔑</div>
+                    <div class="file-details">
+                        <h3>چەناڵی کلیل حەمە</h3>
+                        <p>دەسم لێدە بۆ جۆین کردن</p>
+                    </div>
+                </div>
+                <div class="file-meta"><span class="price-badge">جۆین ↗</span></div>
+            </a>
+            <!-- 4 -->
+            <a href="https://t.me/hama_vip_key1" target="_blank" class="file-item">
+                <div class="file-info">
+                    <div class="file-icon">🔑</div>
+                    <div class="file-details">
+                        <h3>چەناڵی کلیل حەمە (دووەم)</h3>
+                        <p>دەسم لێدە بۆ جۆین کردن</p>
+                    </div>
+                </div>
+                <div class="file-meta"><span class="price-badge">جۆین ↗</span></div>
+            </a>
+            <!-- 5 -->
+            <a href="https://t.me/hama_vip2" target="_blank" class="file-item">
+                <div class="file-info">
+                    <div class="file-icon">📦</div>
+                    <div class="file-details">
+                        <h3>ئەپڵۆد کردن و بڵاوکردنەوەی فایلەکان</h3>
+                        <p>دەسم لێدە بۆ جۆین کردن</p>
+                    </div>
+                </div>
+                <div class="file-meta"><span class="price-badge">جۆین ↗</span></div>
+            </a>
+            <!-- 6 -->
+            <a href="https://t.me/hama_group_chat" target="_blank" class="file-item">
+                <div class="file-info">
+                    <div class="file-icon">💬</div>
+                    <div class="file-details">
+                        <h3>گروپ چاتەکەی حەمە</h3>
+                        <p>دەسم لێدە بۆ جۆین کردن</p>
+                    </div>
+                </div>
+                <div class="file-meta"><span class="price-badge">جۆین ↗</span></div>
+            </a>
+            <!-- 7 -->
+            <a href="https://t.me/hama_ferkary" target="_blank" class="file-item">
+                <div class="file-info">
+                    <div class="file-icon">📚</div>
+                    <div class="file-details">
+                        <h3>جەناڵی فێرکاری حەمە</h3>
+                        <p>دەسم لێدە بۆ جۆین کردن</p>
+                    </div>
+                </div>
+                <div class="file-meta"><span class="price-badge">جۆین ↗</span></div>
+            </a>
+            <!-- 8 -->
+            <a href="https://t.me/hama_hack_video" target="_blank" class="file-item">
+                <div class="file-info">
+                    <div class="file-icon">🎬</div>
+                    <div class="file-details">
+                        <h3>جەناڵی ڤیدیۆی هاکەکانی حەمە</h3>
+                        <p>دەسم لێدە بۆ جۆین کردن</p>
+                    </div>
+                </div>
+                <div class="file-meta"><span class="price-badge">جۆین ↗</span></div>
+            </a>
+            <!-- 9 -->
+            <a href="https://t.me/HAMA_PREMIUM" target="_blank" class="file-item">
+                <div class="file-info">
+                    <div class="file-icon">💰</div>
+                    <div class="file-details">
+                        <h3>جەناڵی تایبەت بە نرخی هاکەکان</h3>
+                        <p>دەسم لێدە بۆ جۆین کردن</p>
+                    </div>
+                </div>
+                <div class="file-meta"><span class="price-badge">جۆین ↗</span></div>
+            </a>
+            <!-- 10 -->
+            <a href="https://t.me/Hx_Speech" target="_blank" class="file-item">
+                <div class="file-info">
+                    <div class="file-icon">🌐</div>
+                    <div class="file-details">
+                        <h3>چەناڵی Hx-Speech (تایبەت بە وێبسایتەکانی حەمە)</h3>
+                        <p>دەسم لێدە بۆ جۆین کردن</p>
+                    </div>
+                </div>
+                <div class="file-meta"><span class="price-badge">جۆین ↗</span></div>
+            </a>
+        </div>
+
+        <!-- Sideloaders Section -->
+        <div class="section-title" id="txtSideloadTitle">سایدلۆدەری ئایۆس و ئامرازەکان</div>
         <div class="file-list">
             <div class="file-item">
                 <div class="file-info">
                     <div class="file-icon">📂</div>
                     <div class="file-details">
                         <h3>ESign v5.0</h3>
-                        <p>واژۆکردنی فەرمی و دابەزاندنی ئەپەکان</p>
+                        <p id="txtEsingDesc">واژۆکردنی فەرمی و دابەزاندنی ئەپەکان</p>
                     </div>
                 </div>
-                <div class="file-meta">
-                    <span class="tag">.ipa</span>
-                </div>
+                <div class="file-meta"><span class="tag">.ipa</span></div>
             </div>
             <div class="file-item">
                 <div class="file-info">
                     <div class="file-icon">📂</div>
                     <div class="file-details">
                         <h3>Feather Installer</h3>
-                        <p>بەڕێوەبەری خێرای ئایۆس و ئایپادۆس</p>
+                        <p id="txtFeatherDesc">بەڕێوەبەری خێرای ئایۆس و ئایپادۆس</p>
                     </div>
                 </div>
-                <div class="file-meta">
-                    <span class="tag">.ipa</span>
-                </div>
+                <div class="file-meta"><span class="tag">.ipa</span></div>
             </div>
+        </div>
+
+        <!-- Contact Box -->
+        <div class="contact-box">
+            <p style="margin: 0 0 5px 0; font-size: 12px; color: var(--text-sub);" id="txtContactTitle">نامەم بۆ بنێرن:</p>
+            <a href="https://t.me/H4M4xIOS" target="_blank">@H4M4xIOS 👑🛠</a>
         </div>
 
     </div>
 
+    <script>
+        const texts = {
+            ckb: {
+                htmlDir: "rtl",
+                htmlLang: "ckb",
+                gateTitle: "تکایە زمانی دڵخوازت هەڵبژێرە 👇🏽",
+                gateMsg: "ئەم وێپسایتە دروست کراوی چەناڵی HAMA⚡️VIP بۆ ئێوەی خۆشەویست وەک هاو کاریەک جۆینی چەناڵ بکە❤️",
+                joinBtn: "جۆین کردنی چەناڵ 😍❤️",
+                continueBtn: "بەردەوام بوون ...",
+                txtStatus: "سەکۆی فەرمی فایل و سێرڤەرەکان",
+                txtVisitorsTitle: "👥 کۆی سەردانیکەرانی وێبسایت:",
+                txtBadgeApp: "تایبەت و نایاب",
+                txtAppName: "ئەپە تایبەتەکەی خۆمان ⚡",
+                txtAppDesc: "کرتە بکە بۆ کردنەوەی پۆرتالی سەرەکی ئەپەکە",
+                txtLogoMakerTitle: "🎨 بەشی دروستکردنی لۆگۆ (Logo Maker)",
+                txtLogoMakerDesc: "ناوی خۆت یان کەناڵەکەت بنووسە بۆ داواکردنی دیزاینی تایبەت:",
+                txtLogoBtn: "داواکردنی لۆگۆ ڕاستەوخۆ ⚡",
+                txtProTitle: "⭐ پۆرتالی تایبەتی PRO & Server",
+                txtProItemTitle: "چوونەژوورەوە بە کلیل (Verification)",
+                txtProItemDesc: "بۆ خاوەن کلیلەکانی PRO (5,000 IQD) و Server (10,000 IQD)",
+                txtOpen: "کردنەوە ←",
+                txtChannelsTitle: "📢 چەناڵ و گروپەکانی حەمە (HAMA VIP)",
+                txtSideloadTitle: "سایدلۆدەری ئایۆس و ئامرازەکان",
+                txtEsingDesc: "واژۆکردنی فەرمی و دابەزاندنی ئەپەکان",
+                txtFeatherDesc: "بەڕێوەبەری خێرای ئایۆس و ئایپادۆس",
+                txtContactTitle: "نامەم بۆ بنێرن:"
+            },
+            en: {
+                htmlDir: "ltr",
+                htmlLang: "en",
+                gateTitle: "Please select your preferred language 👇🏽",
+                gateMsg: "This website was created by the HAMA⚡️VIP channel for you dear ones, as a support please join the channel ❤️",
+                joinBtn: "Join Channel 😍❤️",
+                continueBtn: "Continue ...",
+                txtStatus: "Official Files & Server Portal",
+                txtVisitorsTitle: "👥 Total Website Visitors:",
+                txtBadgeApp: "Special & VIP",
+                txtAppName: "Our Custom App ⚡",
+                txtAppDesc: "Click to open the main app portal",
+                txtLogoMakerTitle: "🎨 Logo Maker Section",
+                txtLogoMakerDesc: "Type your name or channel to request a custom design:",
+                txtLogoBtn: "Request Custom Logo ⚡",
+                txtProTitle: "⭐ PRO & Server Portal",
+                txtProItemTitle: "Key Verification Login",
+                txtProItemDesc: "For PRO (5,000 IQD) and Server (10,000 IQD) key holders",
+                txtOpen: "Open →",
+                txtChannelsTitle: "📢 HAMA VIP Channels & Groups",
+                txtSideloadTitle: "iOS Sideloaders & Tools",
+                txtEsingDesc: "Official signing and app deployment",
+                txtFeatherDesc: "Fast iOS and iPadOS manager",
+                txtContactTitle: "Send me a message:"
+            }
+        };
+
+        let currentLang = 'ckb';
+
+        function setLanguage(lang) {
+            currentLang = lang;
+            document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            const t = texts[lang];
+            document.getElementById('htmlRoot').setAttribute('dir', t.htmlDir);
+            document.getElementById('htmlRoot').setAttribute('lang', t.htmlLang);
+
+            document.getElementById('gateTitle').innerText = t.gateTitle;
+            document.getElementById('gateMsg').innerText = t.gateMsg;
+            document.getElementById('joinBtn').innerText = t.joinBtn;
+            document.getElementById('continueBtn').innerText = t.continueBtn;
+            
+            document.getElementById('txtStatus').innerText = t.txtStatus;
+            document.getElementById('txtVisitorsTitle').innerText = t.txtVisitorsTitle;
+            document.getElementById('txtBadgeApp').innerText = t.txtBadgeApp;
+            document.getElementById('txtAppName').innerText = t.txtAppName;
+            document.getElementById('txtAppDesc').innerText = t.txtAppDesc;
+            document.getElementById('txtLogoMakerTitle').innerText = t.txtLogoMakerTitle;
+            document.getElementById('txtLogoMakerDesc').innerText = t.txtLogoMakerDesc;
+            document.getElementById('txtLogoBtn').innerText = t.txtLogoBtn;
+            document.getElementById('txtProTitle').innerText = t.txtProTitle;
+            document.getElementById('txtProItemTitle').innerText = t.txtProItemTitle;
+            document.getElementById('txtProItemDesc').innerText = t.txtProItemDesc;
+            document.getElementById('txtOpen').innerText = t.txtOpen;
+            document.getElementById('txtChannelsTitle').innerText = t.txtChannelsTitle;
+            document.getElementById('txtSideloadTitle').innerText = t.txtSideloadTitle;
+            document.getElementById('txtEsingDesc').innerText = t.txtEsingDesc;
+            document.getElementById('txtFeatherDesc').innerText = t.txtFeatherDesc;
+            document.getElementById('txtContactTitle').innerText = t.txtContactTitle;
+        }
+
+        function toggleLanguage() {
+            if(currentLang === 'ckb') {
+                setLanguage('en');
+            } else {
+                setLanguage('ckb');
+            }
+        }
+
+        function closeGate() {
+            document.getElementById('welcomeGate').style.display = 'none';
+        }
+
+        // Real Visitor Counter
+        fetch('https://api.countapi.xyz/hit/hx-speech-portal-hama/visits')
+            .then(res => res.json())
+            .then(data => {
+                document.getElementById('visitorCount').innerHTML = `<b>${data.value}</b>`;
+            })
+            .catch(err => {
+                let count = localStorage.getItem('site_visits') || 1420;
+                count = parseInt(count) + 1;
+                localStorage.setItem('site_visits', count);
+                document.getElementById('visitorCount').innerHTML = `<b>${count}</b>`;
+            });
+
+        function generateLogoRequest() {
+            const val = document.getElementById('logoText').value.trim();
+            if(!val) {
+                alert(currentLang === 'ckb' ? 'تکایە ناوێک بنووسە!' : 'Please enter a name!');
+                return;
+            }
+            window.open(`https://t.me/H4M4xIOS?text=سڵاو%20دەمەوێ%20لۆگۆیەکم%20بۆ%20دروست%20بکەی%20بە%20ناوی:%20${encodeURIComponent(val)}`, '_blank');
+        }
+    </script>
 </body>
 </html>
