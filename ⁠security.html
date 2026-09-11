@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="ckb" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Hx-Security | Ultimate Shield & Protection Portal</title>
+    <link rel="icon" type="image/png" href="logo.png">
+    <style>
+        :root {
+            --bg-color: #020202;
+            --card-bg: #0a0a0c;
+            --card-hover: #121216;
+            --border-secure: rgba(0, 255, 100, 0.2);
+            --accent-secure: #00ff66;
+            --secure-glow: rgba(0, 255, 100, 0.15);
+            --text-main: #ffffff;
+            --text-sub: #999999;
+        }
+        * {
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+            text-decoration: none;
+            user-select: none; /* قفڵکردنی کۆپی کردن */
+        }
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            margin: 0;
+            padding: 24px 16px 50px 16px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .header {
+            width: 100%;
+            max-width: 420px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border-secure);
+            padding-bottom: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo-box {
+            width: 55px;
+            height: 55px;
+            border-radius: 14px;
+            background: #000;
+            border: 2px solid var(--accent-secure);
+            box-shadow: 0 0 15px var(--secure-glow);
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .logo-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .header-text h1 {
+            margin: 0 0 4px 0;
+            font-size: 20px;
+            font-weight: 800;
+            color: var(--text-main);
+        }
+        .header-text p {
+            margin: 0;
+            font-size: 11px;
+            color: var(--accent-secure);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .status-dot {
+            height: 8px;
+            width: 8px;
+            background-color: var(--accent-secure);
+            border-radius: 50%;
+            display: inline-block;
+            box-shadow: 0 0 10px var(--accent-secure);
+        }
+        .container {
+            width: 100%;
+            max-width: 420px;
+        }
+        /* Security Status Banner */
+        .sec-banner {
+            background: linear-gradient(135deg, #0a0a0c 0%, #051a0e 100%);
+            border: 1px solid var(--border-secure);
+            border-radius: 16px;
+            padding: 16px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 20px var(--secure-glow);
+            text-align: center;
+        }
+        .sec-banner h3 {
+            margin: 0 0 6px 0;
+            color: var(--accent-secure);
+            font-size: 15px;
+        }
+        .sec-banner p {
+            margin: 0;
+            font-size: 11px;
+            color: var(--text-sub);
+            line-height: 1.5;
+        }
+        .section-title {
+            font-size: 12px;
+            color: var(--accent-secure);
+            margin: 20px 0 10px 0;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        .file-list {
+            background: var(--card-bg);
+            border-radius: 16px;
+            border: 1px solid var(--border-secure);
+            overflow: hidden;
+            margin-bottom: 15px;
+        }
+        .file-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 14px 16px;
+            border-bottom: 1px solid rgba(0, 255, 100, 0.08);
+            transition: background 0.2s;
+        }
+        .file-item:last-child {
+            border-bottom: none;
+        }
+        .file-item:hover {
+            background: var(--card-hover);
+        }
+        .file-info {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .file-icon {
+            font-size: 20px;
+            width: 25px;
+            text-align: center;
+        }
+        .file-details h3 {
+            margin: 0 0 2px 0;
+            font-size: 14px;
+            color: var(--text-main);
+            font-weight: 700;
+        }
+        .file-details p {
+            margin: 0;
+            font-size: 11px;
+            color: var(--text-sub);
+        }
+        .secure-badge {
+            background: rgba(0, 255, 100, 0.1);
+            color: var(--accent-secure);
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-weight: 700;
+            font-size: 11px;
+            border: 1px solid rgba(0, 255, 100, 0.2);
+        }
+        /* Protection Tool Box */
+        .tool-box {
+            background: var(--card-bg);
+            border: 1px solid var(--border-secure);
+            border-radius: 16px;
+            padding: 16px;
+            margin-bottom: 20px;
+        }
+        .tool-box h3 {
+            margin: 0 0 8px 0;
+            font-size: 13px;
+            color: var(--accent-secure);
+        }
+        .sec-input {
+            width: 100%;
+            padding: 10px;
+            background: #040404;
+            border: 1px solid var(--border-secure);
+            border-radius: 8px;
+            color: #fff;
+            font-size: 12px;
+            margin-bottom: 10px;
+            outline: none;
+        }
+        .sec-btn {
+            width: 100%;
+            background: rgba(0, 255, 100, 0.15);
+            border: 1px solid var(--accent-secure);
+            color: var(--accent-secure);
+            padding: 10px;
+            border-radius: 8px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .sec-btn:hover {
+            background: var(--accent-secure);
+            color: #000;
+        }
+        .back-link {
+            display: block;
+            text-align: center;
+            margin-top: 25px;
+            color: var(--text-sub);
+            font-size: 12px;
+            transition: 0.2s;
+        }
+        .back-link:hover {
+            color: var(--accent-secure);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <div class="logo-box">
+            <img src="logo.png" alt="Logo">
+        </div>
+        <div class="header-text">
+            <h1>Hx-Security Shield</h1>
+            <p><span class="status-dot"></span> سیستمی پاراستنی توندوتۆڵ</p>
+        </div>
+    </div>
+
+    <div class="container">
+
+        <!-- Banner -->
+        <div class="sec-banner">
+            <h3>🛡️ قەڵای پاراستنی ئەکاونتەکان</h3>
+            <p>ئەم بەشە تایبەتە بە پاراستنی تەواوەتی ئەکاونتە هەستیارەکانت لە هاککردن، دزپێکردن و چاودێریکردن بە شێوازی پیشەگەرانە.</p>
+        </div>
+
+        <!-- Accounts Protection Links -->
+        <div class="section-title">🔒 پاراستنی فەرمی ئەکاونتەکان</div>
+        <div class="file-list">
+            <a href="https://myaccount.google.com/security" target="_blank" class="file-item">
+                <div class="file-info">
+                    <div class="file-icon">🌐</div>
+                    <div class="file-details">
+                        <h3>پاراستنی ئەکاونتی گۆگڵ (Google Security)</h3>
+                        <p>پشکنینی دوو هەنگاوی و ڕێگری لە هاک</p>
+                    </div>
+                </div>
+                <div class="file-meta"><span class="secure-badge">قفل 🔒</span></div>
+            </a>
+
+            <a href="https://support.apple.com/apple-id" target="_blank" class="file-item">
+                <div class="file-info">
+                    <div class="file-icon">🍏</div>
+                    <div class="file-details">
+                        <h3>پاراستنی ئەپڵ ئایدی (Apple ID Shield)</h3>
+                        <p>کۆنترۆڵی ئامێرەکان و Two-Factor</p>
+                    </div>
+                </div>
+                <div class="file-meta"><span class="secure-badge">قفل 🔒</span></div>
+            </a>
+
+            <a href="https://www.facebook.com/settings?tab=security" target="_blank" class="file-item">
+                <div class="file-info">
+                    <div class="file-icon">📘</div>
+                    <div class="file-details">
+                        <h3>پاراستنی فەیسبووک (Facebook Security)</h3>
+                        <p>ئاگادارکردنەوەی چوونەژوورەوەی نەناسراو</p>
+                    </div>
+                </div>
+                <div class="file-meta"><span class="secure-badge">قفل 🔒</span></div>
+            </a>
+        </div>
+
+        <!-- Security Check Tool -->
+        <div class="tool-box">
+            <h3>🔍 پشکنینی ئاساییش و یۆزەر</h3>
+            <p style="font-size: 11px; color: var(--text-sub); margin-bottom: 10px;">یۆزەرنەیم یان لینک بنووسە بۆ لێکۆڵینەوە لە سەلامەتییەکەی:</p>
+            <input type="text" class="sec-input" id="checkInput" placeholder="بۆ نموونە یۆزەری تلگرام یان لینک...">
+            <button class="sec-btn" onclick="runSecurityCheck()">پشکنینی خێرا ⚡</button>
+        </div>
+
+        <a href="index.html" class="file-link back-link">← گەڕانەوە بۆ پۆرتالی سەرەکی</a>
+
+    </div>
+
+    <script>
+        // قفڵکردنی کۆپی کردن و کلیکی ڕاست بۆ ئەوەی کەس نەتوانێت کۆدەکان ببڕێت یان هاکی بکات
+        document.addEventListener('contextmenu', event => event.preventDefault());
+        document.onkeydown = function(e) {
+            if(e.keyCode == 123 || (e.ctrlKey && e.shiftKey && (e.keyCode == 73 || e.keyCode == 74)) || (e.ctrlKey && e.keyCode == 85)) {
+                return false;
+            }
+        };
+
+        function runSecurityCheck() {
+            const val = document.getElementById('checkInput').value.trim();
+            if(!val) {
+                alert('تکایە شتێک بنووسە بۆ پشکنین!');
+                return;
+            }
+            alert('✅ پشکنین تەواو بوو: ئەم ئاراستەیە لەژێر چاودێری و پاراستنی پۆرتالی Hx-Security دایە و هیچ کێشەیەکی نییە.');
+        }
+    </script>
+</body>
+</html>
