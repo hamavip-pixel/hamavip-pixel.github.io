@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="ckb" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Hx-Speech | Ultimate Portal</title>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <style>
+        :root {
+            --bg-color: #040404;
+            --card-bg: #101010;
+            --card-hover: #181818;
+            --border-color: rgba(0, 255, 204, 0.15);
+            --border-pro: rgba(255, 215, 0, 0.3);
+            --accent: #00ffcc;
+            --pro-color: #ffd700;
+            --accent-glow: rgba(0, 255, 204, 0.25);
+            --pro-glow: rgba(255, 215, 0, 0.2);
+            --text-main: #ffffff;
+            --text-sub: #888888;
+            --tag-bg: rgba(0, 255, 204, 0.1);
+            --pro-tag-bg: rgba(255, 215, 0, 0.1);
+        }
+        * {
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+            text-decoration: none;
+        }
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            margin: 0;
+            padding: 24px 16px 45px 16px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .header {
+            width: 100%;
+            max-width: 420px;
+            margin-bottom: 25px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 20px;
+        }
+        .avatar-badge {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .logo-box {
+            width: 64px;
+            height: 64px;
+            border-radius: 12px;
+            background: #000;
+            border: 2px solid var(--accent);
+            box-shadow: 0 0 15px var(--accent-glow);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent);
+            font-weight: 900;
+            font-size: 28px;
+            font-family: monospace;
+        }
+        .header-text h1 {
+            margin: 0 0 4px 0;
+            font-size: 24px;
+            font-weight: 800;
+            letter-spacing: 1px;
+            color: var(--text-main);
+        }
+        .header-text p {
+            margin: 0;
+            font-size: 12px;
+            color: var(--text-sub);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .status-dot {
+            height: 8px;
+            width: 8px;
+            background-color: var(--accent);
+            border-radius: 50%;
+            display: inline-block;
+            box-shadow: 0 0 10px var(--accent);
+        }
+        .container {
+            width: 100%;
+            max-width: 420px;
+        }
+        .section-title {
+            font-size: 13px;
+            color: var(--accent);
+            margin: 25px 0 10px 0;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        .section-title.pro-title {
+            color: var(--pro-color);
+        }
+        .file-list {
+            background: var(--card-bg);
+            border-radius: 16px;
+            border: 1px solid var(--border-color);
+            overflow: hidden;
+        }
+        .file-list.pro-list {
+            border-color: var(--border-pro);
+            box-shadow: 0 0 20px var(--pro-glow);
+        }
+        .file-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 14px 16px;
+            border-bottom: 1px solid var(--border-color);
+            transition: background 0.2s;
+        }
+        .file-list.pro-list .file-item {
+            border-bottom-color: rgba(255, 215, 0, 0.15);
+        }
+        .file-item:last-child {
+            border-bottom: none;
+        }
+        .file-item:hover {
+            background: var(--card-hover);
+        }
+        .file-info {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .file-icon {
+            color: var(--text-sub);
+            width: 20px;
+            text-align: center;
+        }
+        .file-details h3 {
+            margin: 0 0 2px 0;
+            font-size: 14px;
+            color: var(--text-main);
+            font-weight: 600;
+        }
+        .file-details p {
+            margin: 0;
+            font-size: 11px;
+            color: var(--text-sub);
+        }
+        .file-meta {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 11px;
+        }
+        .tag {
+            background: var(--tag-bg);
+            color: var(--accent);
+            padding: 3px 8px;
+            border-radius: 6px;
+            font-weight: 700;
+            font-family: monospace;
+        }
+        .tag.pro-tag {
+            background: var(--pro-tag-bg);
+            color: var(--pro-color);
+        }
+        .price-badge {
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-main);
+            padding: 4px 8px;
+            border-radius: 6px;
+            font-weight: 700;
+            font-size: 11px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <div class="avatar-badge">
+            <div class="logo-box">Hx</div>
+            <div class="header-text">
+                <h1>Hx-Speech</h1>
+                <p><span class="status-dot"></span> سەکۆی فەرمی فایل و سێرڤەرەکان</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+
+        <!-- بەشی چوونەژوورەوەی پرۆ -->
+        <div class="section-title pro-title">⭐ پۆرتالی تایبەتی PRO & Server</div>
+        <div class="file-list pro-list">
+            <a href="proverifay.html" class="file-item">
+                <div class="file-info">
+                    <div class="file-icon">⚡</div>
+                    <div class="file-details">
+                        <h3>چوونەژوورەوە بە کلیل (Verification)</h3>
+                        <p>بۆ خاوەن کلیلەکانی PRO (5,000 IQD) و Server (10,000 IQD)</p>
+                    </div>
+                </div>
+                <div class="file-meta">
+                    <span class="tag pro-tag">VIP</span>
+                    <span class="price-badge">کردنەوە ←</span>
+                </div>
+            </a>
+        </div>
+
+        <!-- بەشی سایدلۆدەرەکان -->
+        <div class="section-title">سایدلۆدەری ئایۆس و ئامرازەکان</div>
+        <div class="file-list">
+            <div class="file-item">
+                <div class="file-info">
+                    <div class="file-icon">📂</div>
+                    <div class="file-details">
+                        <h3>ESign v5.0</h3>
+                        <p>واژۆکردنی فەرمی و دابەزاندنی ئەپەکان</p>
+                    </div>
+                </div>
+                <div class="file-meta">
+                    <span class="tag">.ipa</span>
+                </div>
+            </div>
+            <div class="file-item">
+                <div class="file-info">
+                    <div class="file-icon">📂</div>
+                    <div class="file-details">
+                        <h3>Feather Installer</h3>
+                        <p>بەڕێوەبەری خێرای ئایۆس و ئایپادۆس</p>
+                    </div>
+                </div>
+                <div class="file-meta">
+                    <span class="tag">.ipa</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>
