@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="ckb" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Hx-Speech | PRO Verification</title>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <style>
+        :root {
+            --bg-color: #040404;
+            --card-bg: #101010;
+            --card-hover: #181818;
+            --border-pro: rgba(255, 215, 0, 0.3);
+            --pro-color: #ffd700;
+            --pro-glow: rgba(255, 215, 0, 0.25);
+            --text-main: #ffffff;
+            --text-sub: #888888;
+        }
+        * {
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+            text-decoration: none;
+        }
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            margin: 0;
+            padding: 24px 16px 45px 16px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .header {
+            width: 100%;
+            max-width: 420px;
+            margin-bottom: 25px;
+            border-bottom: 1px solid var(--border-pro);
+            padding-bottom: 20px;
+            text-align: center;
+        }
+        .header h1 {
+            margin: 10px 0 4px 0;
+            font-size: 22px;
+            font-weight: 800;
+            color: var(--pro-color);
+        }
+        .header p {
+            margin: 0;
+            font-size: 12px;
+            color: var(--text-sub);
+        }
+        .container {
+            width: 100%;
+            max-width: 420px;
+        }
+        #auth-box {
+            background: var(--card-bg);
+            padding: 20px;
+            border-radius: 16px;
+            border: 1px solid var(--border-pro);
+            text-align: center;
+            box-shadow: 0 0 20px var(--pro-glow);
+            margin-bottom: 20px;
+        }
+        #auth-box input {
+            width: 100%;
+            padding: 12px;
+            background: #000;
+            border: 1px solid var(--border-pro);
+            border-radius: 8px;
+            color: #fff;
+            font-size: 14px;
+            text-align: center;
+            margin-bottom: 12px;
+            outline: none;
+            letter-spacing: 1px;
+        }
+        #auth-box button {
+            width: 100%;
+            padding: 12px;
+            background: var(--pro-color);
+            color: #000;
+            border: none;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 14px;
+            cursor: pointer;
+        }
+        .error-msg {
+            color: #ff4d4d;
+            font-size: 12px;
+            margin-top: 10px;
+            display: none;
+            font-weight: 600;
+        }
+        #pro-content {
+            display: none;
+        }
+        .section-title {
+            font-size: 13px;
+            color: var(--pro-color);
+            margin: 20px 0 10px 0;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+        .file-list {
+            background: var(--card-bg);
+            border-radius: 16px;
+            border: 1px solid var(--border-pro);
+            overflow: hidden;
+        }
+        .file-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 14px 16px;
+            border-bottom: 1px solid rgba(255, 215, 0, 0.15);
+        }
+        .file-item:last-child {
+            border-bottom: none;
+        }
+        .file-info h3 {
+            margin: 0 0 2px 0;
+            font-size: 14px;
+            color: var(--text-main);
+        }
+        .file-info p {
+            margin: 0;
+            font-size: 11px;
+            color: var(--text-sub);
+        }
+        .btn-download {
+            background: var(--pro-color);
+            color: #000;
+            padding: 6px 12px;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 11px;
+        }
+        .back-btn {
+            display: block;
+            text-align: center;
+            margin-top: 30px;
+            color: var(--text-sub);
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1>Hx-Speech PRO Portal</h1>
+        <p>تکایە کلیلی تاکەکەسی خۆت بنووسە</p>
+    </div>
+
+    <div class="container">
+
+        <div id="auth-box">
+            <input type="text" id="access-key" placeholder="HX-PRO-XXXXX">
+            <button onclick="checkKey()">پشکنین و چوونەژوورەوە</button>
+            <div id="error" class="error-msg">کلیلەکە هەڵەیە یان پێشتر بەکارهاتووە!</div>
+        </div>
+
+        <div id="pro-content">
+            <div class="section-title">🔥 سێرڤەری پرۆ (10,000+ ئەپی مۆدکراو)</div>
+            <div class="file-list">
+                <div class="file-item">
+                    <div class="file-info">
+                        <h3>Modified Apps Repository</h3>
+                        <p>دەستگەیشتن بە سەرجەم ئەپە هاککراوەکان</p>
+                    </div>
+                    <a href="#" class="btn-download">داونلۆد</a>
+                </div>
+            </div>
+
+            <div class="section-title">⭐ فایل و ئامرازە تایبەتەکانی PRO</div>
+            <div class="file-list">
+                <div class="file-item">
+                    <div class="file-info">
+                        <h3>Hx-Speech VIP Scripts</h3>
+                        <p>سکریپت و فایلە پێشکەوتووەکان</p>
+                    </div>
+                    <a href="#" class="btn-download">داونلۆد</a>
+                </div>
+            </div>
+        </div>
+
+        <a href="index.html" class="back-btn">← گەڕانەوە بۆ لاپەڕەی سەرەکی</a>
+
+    </div>
+
+    <!-- بەستنەوەی فایلی کلیلەکان -->
+    <script src="servarkey.js"></script>
+    <script>
+        window.onload = function() {
+            let savedKey = localStorage.getItem("hx_active_key");
+            if (savedKey) {
+                document.getElementById("auth-box").style.display = "none";
+                document.getElementById("pro-content").style.display = "block";
+            }
+        }
+
+        function checkKey() {
+            let userKey = document.getElementById("access-key").value.trim();
+            let errorMsg = document.getElementById("error");
+
+            let usedKeys = JSON.parse(localStorage.getItem("hx_used_keys") || "[]");
+
+            if (validKeys.hasOwnProperty(userKey)) {
+                if (usedKeys.includes(userKey)) {
+                    errorMsg.innerText = "ئەم کلیلە پێشتر داخڵ کراوە و بەکارهاتووە!";
+                    errorMsg.style.display = "block";
+                } else {
+                    usedKeys.push(userKey);
+                    localStorage.setItem("hx_used_keys", JSON.stringify(usedKeys));
+                    localStorage.setItem("hx_active_key", userKey);
+
+                    document.getElementById("auth-box").style.display = "none";
+                    document.getElementById("pro-content").style.display = "block";
+                }
+            } else {
+                errorMsg.innerText = "کلیلەکە هەڵەیە یان بوونی نییە!";
+                errorMsg.style.display = "block";
+            }
+        }
+    </script>
+
+</body>
+</html>
